@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:zego/constants/constants.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
@@ -12,6 +11,21 @@ class Video extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Ensure callID is not empty or null
+    if (callID.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Error'),
+        ),
+        body: const Center(
+          child: Text('Call ID is required to start the video call.'),
+        ),
+      );
+    }
+    print(callID);
+    print(userId);
+    print(Constants.appID);
+    print(Constants.appSign);
     return ZegoUIKitPrebuiltCall(
       appID: Constants
           .appID, // Fill in the appID that you get from ZEGOCLOUD Admin Console.
